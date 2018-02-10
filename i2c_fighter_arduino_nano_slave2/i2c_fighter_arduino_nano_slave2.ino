@@ -8,6 +8,8 @@ void setup() {
   Wire.onRequest(requestEvent);
   Serial.begin(9600);           // start serial for output
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(7, OUTPUT);
+  
 
 }
 
@@ -15,7 +17,7 @@ void loop() {
   //TODO: Respond to REQ 
   //Wait for winner or loop
   delay(200);  
-
+  
 }
 
 
@@ -39,6 +41,7 @@ void receiveEvent(int howMany) {
     Serial.print(" WON!!!"); 
     Serial.println(x);         // print the integer
     digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+    
   }
   //TODO: WINNER SEQUENCEs!
 }

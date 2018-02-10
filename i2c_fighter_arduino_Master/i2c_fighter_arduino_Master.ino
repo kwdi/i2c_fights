@@ -115,6 +115,7 @@ void loop() {
   
   Wire.beginTransmission(winner);
   Wire.write(7); //7 defines a lucky number so we send that as a response to the winner
+  Wire.endTransmission();    // stop transmitting
   digitalWrite(LED_BUILTIN, HIGH);
   Serial.print("----------------------Winner is : ");
   Serial.println(winner);
