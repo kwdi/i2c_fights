@@ -22,6 +22,7 @@ void receiveEvent(int howMany) {
     Serial.print(c);         // print the character
   }
   int x = Wire.read();    // receive byte as an integer
+  Serial.println("slave");
   Serial.println(x);         // print the integer
     digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
 
