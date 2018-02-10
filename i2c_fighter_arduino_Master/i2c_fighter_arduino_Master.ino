@@ -1,6 +1,8 @@
 
 
 #include <Wire.h>
+#include <LiquidCrystal.h>
+
 #define PAPER 1
 #define SCISSORS 2
 #define ROCK 3
@@ -12,10 +14,14 @@ int contResp1;
 int contResp2;
 int winner;
 
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
 void setup() {
   Wire.begin(); // join i2c bus (address optional for master)
   Serial.begin(9600); // opens serial port, sets data rate to 9600 bps
   pinMode(LED_BUILTIN, OUTPUT);
+  lcd.begin(16, 2);
   
 }
 
@@ -112,6 +118,22 @@ void loop() {
   digitalWrite(LED_BUILTIN, HIGH);
   Serial.print("----------------------Winner is : ");
   Serial.println(winner);
-  delay(500);
+  lcd.begin(16, 2);
+  lcd.print("Fight between");
+  delay(1000);
+  lcd.begin(16, 2);
+  lcd.print("    ");
+  lcd.setCursor(0, 0);
+  lcd.print(contestant1);
+  lcd.print(" ");
+  lcd.print("and");
+  lcd.print(" ");
+  lcd.print(contestant2);
+  lcd.setCursor(0, 1);
+  lcd.print(winner);
+  lcd.print(" ");
+  lcd.print("WON");
+  lcd.setCursor(0, 0);
+  delay(1000);
  
 }
