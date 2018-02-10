@@ -6,7 +6,7 @@
 #define PAPER 1
 #define SCISSORS 2
 #define ROCK 3
-#define NUM_CONTESTANTS (3+1)
+#define NUM_CONTESTANTS (2+1)
 
 int contestant1;
 int contestant2;
@@ -126,15 +126,33 @@ void loop() {
   lcd.print("    ");
   lcd.setCursor(0, 0);
   lcd.print(contestant1);
-  lcd.print(" ");
+  if(contestant1==1){
+    lcd.print(":P ");
+  }
+  else if (contestant1==2){
+    lcd.print(":S ");
+  }
+  else{ 
+    lcd.print(":R ");
+  }
+  
   lcd.print("and");
   lcd.print(" ");
   lcd.print(contestant2);
+   if(contestant2==1){
+    lcd.print(":P ");
+  }
+  else if (contestant2==2){
+    lcd.print(":S ");
+  }
+  else{ 
+    lcd.print(":R ");
+  }
   lcd.setCursor(0, 1);
   lcd.print(winner);
   lcd.print(" ");
-  lcd.print("WON");
+  lcd.print("WON :)");
   lcd.setCursor(0, 0);
-  delay(1000);
+  delay(2000);
  
 }

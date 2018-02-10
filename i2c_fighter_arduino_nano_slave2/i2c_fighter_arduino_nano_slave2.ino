@@ -1,6 +1,7 @@
 #include <Wire.h>
 #define OWN_ADDRESS 2
 
+int lets_roll=0;
 int winResp = 0; 
 void setup() {
   Wire.begin(OWN_ADDRESS);                // join i2c bus with address #8
@@ -8,7 +9,7 @@ void setup() {
   Wire.onRequest(requestEvent);
   Serial.begin(9600);           // start serial for output
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
   
 
 }
@@ -17,7 +18,12 @@ void loop() {
   //TODO: Respond to REQ 
   //Wait for winner or loop
   delay(200);  
-  
+ if (lets_roll==1){
+      digitalWrite(6, HIGH);     
+      delay(1200);               
+      digitalWrite(6, LOW);    
+      lets_roll=0; 
+ }    
 }
 
 
@@ -41,6 +47,7 @@ void receiveEvent(int howMany) {
     Serial.print(" WON!!!"); 
     Serial.println(x);         // print the integer
     digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+    lets_roll=1;
     
   }
   //TODO: WINNER SEQUENCEs!
