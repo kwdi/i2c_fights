@@ -6,7 +6,7 @@
 #define PAPER 1
 #define SCISSORS 2
 #define ROCK 3
-#define NUM_CONTESTANTS (2+1)
+#define NUM_CONTESTANTS (3+1)
 
 int contestant1;
 int contestant2;
@@ -90,7 +90,7 @@ void loop() {
   ContGen();
   Serial.println("Requesting weapons ");
   StartGame();
-  while(contResp1==contResp2 && contResp1!=0 ){
+  while(contResp1==contResp2 && contResp1!=0){
       Serial.println("Same Weapons chosen, REDO!");
       StartGame();
   }
